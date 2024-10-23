@@ -48,7 +48,7 @@ class ConversionController extends Controller
      */
     public function convert(ValidateRequest $request)
     {
-        $validatedData = $request->validated();
+        $request->validated();
 
         if ($request->amount < 1000 || $request->amount > 100000) {
             return response()->json([

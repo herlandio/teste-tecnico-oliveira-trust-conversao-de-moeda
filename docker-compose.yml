@@ -1,0 +1,16 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: laravel-app
+    container_name: laravel_app
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./:/var/www/html
+    networks:
+      - laravel_network
+
+networks:
+  laravel_network:
