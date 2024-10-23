@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   app:
     build:
@@ -11,6 +13,12 @@ services:
       - ./:/var/www/html
     networks:
       - laravel_network
-
+    command: >
+      sh -c "composer update
+      && cp .env.example .env
+      && php artisan key:generate
+      && php artisan migrate
+      && php artisan serve --host=0.0.0.0 --port=8000"
+      
 networks:
   laravel_network:
